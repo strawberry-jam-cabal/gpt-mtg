@@ -1,0 +1,24 @@
+#!/bin/sh
+echo "Starting Pre-Commit Hook"
+# Presubmit script for lyssen's python repository
+# It applies flake8 to all changed python files
+
+# Get all files staged for commit
+STAGED_FILES=$(git diff --staged --name-only | grep -v '^experimental/')
+echo "Staged Files: "
+echo "$STAGED_FILES"
+
+# Extract all python files
+STAGED_PYTHON_FILES=$(echo "$STAGED_FILES" | grep .py$)
+STAGED_NOTEBOOK_FILES=$(echo "$STAGED_FILES" | grep .ipynb$)
+
+# Auto format all staged python files with black.
+echo "Black Python Files"
+for FILE in $STAGED_PYTHON_FILES;
+do
+    echo black $FILE
+    black $FILE
+    git add $FILE
+done
+
+exit 0
