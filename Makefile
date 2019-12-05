@@ -15,7 +15,7 @@ build-cpu: ## Build the container
 	docker build -t mtg-gpt2-cpu -f dev/docker/cpu/Dockerfile .
 
 build-gpu: ## Build the container
-	docker build -t mtg-gpt2-gpu -f dev/docker/cpu/Dockerfile .
+	docker build -t mtg-gpt2-gpu -f dev/docker/gpu/Dockerfile .
 
 run-cpu: ## Run the container
 	docker run --rm -v $(shell pwd):$(shell pwd) -it mtg-gpt2-cpu:latest
