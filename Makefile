@@ -21,7 +21,7 @@ run-cpu: ## Run the container
 	docker run --rm -v $(shell pwd):$(shell pwd) -it mtg-gpt2-cpu:latest
 
 run-gpu: ## Run the container
-	docker run --rm -v $(shell pwd):$(shell pwd) -it mtg-gpt2-gpu:latest
+	nvidia-docker run --rm -v $(shell pwd):$(shell pwd) -it -p 8989:8989 mtg-gpt2-gpu:latest
 
 run-jupyter: ## Run the container
 	docker run --rm -v $(shell pwd):$(shell pwd) -it -p 8999:8999 mtg-gpt2-cpu:latest /bin/sh -c 'cd $(shell pwd); jupyter notebook --allow-root --no-browser --port=8999 --ip=0.0.0.0;'
