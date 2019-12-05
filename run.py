@@ -42,13 +42,19 @@ def download_cards():
 @click.option("--num-steps", type=int, default=10000)
 def finetune(model_name: str, text_path: str, num_steps) -> None:
 
+    # Download the model if it is not present
     if not os.path.isdir(os.path.join("models", model_name)):
         print(f"Downloading {model_name} model...")
         gpt2.download_gpt2(model_name=model_name)
 
+    # Load in the data
+    # TODO:: DOWNLOAD AND CREATE DATASET IF NOT PRESENT
+    with open(text_path) as file:
+        text = file.read()
+
     sess = gpt2.start_tf_sess()
     gpt2.finetune(sess,
-                  text_path,
+                  text,
                   model_name=model_name,
                   steps=num_steps)   # steps is max number of training steps
 
