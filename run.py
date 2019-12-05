@@ -19,6 +19,7 @@ else:
 
 import click
 
+
 @click.group()
 def main():
     pass
@@ -37,7 +38,9 @@ def download_cards():
 
 
 @main.command("finetune")
-@click.option("--model-name", type=str, default="124M", help="Can be 117M, 124M, or 355M")
+@click.option(
+    "--model-name", type=str, default="124M", help="Can be 117M, 124M, or 355M"
+)
 @click.option("--text-path", type=str, default="./data/mtg_combined.txt")
 @click.option("--num-steps", type=int, default=10000)
 def finetune(model_name: str, text_path: str, num_steps) -> None:
@@ -47,12 +50,10 @@ def finetune(model_name: str, text_path: str, num_steps) -> None:
         print(f"Downloading {model_name} model...")
         gpt2.download_gpt2(model_name=model_name)
 
-
     sess = gpt2.start_tf_sess()
-    gpt2.finetune(sess,
-                  text_path,
-                  model_name=model_name,
-                  steps=num_steps)   # steps is max number of training steps
+    gpt2.finetune(
+        sess, text_path, model_name=model_name, steps=num_steps
+    )  # steps is max number of training steps
 
     gpt2.generate(sess)
 
