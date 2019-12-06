@@ -10,6 +10,8 @@ import os
 import sys
 import gpt_2_simple as gpt2
 
+from pymtg import dataprocessing
+
 if "linux" in sys.platform:
     os.environ["LC_AL"] = "C.UTF-8"
     os.environ["LANG"] = "C.UTF-8"
@@ -33,8 +35,20 @@ def download_images():
     pass
 
 
-def download_cards():
-    pass
+@main.command("process-card-text")
+@click.option("--input-file-path", type=str, default="./data/AllCards.json")
+@click.option("--output-file-path", type=str, default="./data/mtg_combined.txt")
+def process_card_text(input_file_path: str, output_file_path) -> None:
+
+    # Download all the cards if we don't have them
+    dataprocessing.create_path(input_file_path)
+    dataprocessing.download_text_data(input_file_path)
+
+    # Compile all of the cards to a combined text file for gpt2
+    text = dataprocessing.parse_mtg_json(input_file_path)
+    dataprocessing.create_path(output_file_path)
+    with open(output_file_path, "w") as f:
+        f.write(text)
 
 
 @main.command("finetune")

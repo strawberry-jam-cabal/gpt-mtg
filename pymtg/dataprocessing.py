@@ -57,6 +57,13 @@ def parse_mtg_json(
         )
         text = "text||" + parsed[key]["text"] if "text" in current_keys else ""
 
+        toughness = (
+            "toughness||" + parsed[key]["toughness"]
+            if "toughness" in current_keys
+            else ""
+        )
+        power = "power||" + parsed[key]["power"] if "power" in current_keys else ""
+
         # Filter out cards which are not the correct type
         if filter_card_type is not None and filter_card_type not in card_type:
             continue
@@ -70,6 +77,8 @@ def parse_mtg_json(
                 card_type,
                 types,
                 subtypes,
+                toughness,
+                power,
                 text,
                 end_token,
             ]
@@ -79,14 +88,24 @@ def parse_mtg_json(
     return "\n".join(training_text)
 
 
-def download_text_data() -> None:
+def create_path(file_path: str) -> None:
+    # Create the path if it doesn't exist
+    path = os.path.split(file_path)[0]
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+
+def download_text_data(file_path: str) -> None:
     """This method downloads all of the text data used for training the model into the data/text folder
     """
-    file_name = "AllCards.json"
-    if not os.path.isfile(file_name):
+    if not os.path.isfile(file_path):
+        # Create the path if it doesn't exist
+        create_path(file_path)
+
+        # Download the data
         url = "https://www.mtgjson.com/files/AllCards.json"
         data = requests.get(url)
-        with open(file_name, 'w') as f:
+        with open(file_path, "w") as f:
             f.write(data.text)
 
 
@@ -139,4 +158,3 @@ def scrape_image_data() -> None:
     pd.DataFrame(urls, columns=["url"]).to_csv(
         "../data/magic_urls.csv", index=False, header=False
     )
-
