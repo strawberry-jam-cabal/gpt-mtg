@@ -47,9 +47,8 @@ def download_images(images_path: str):
         dataprocessing.scrape_image_data(url_path)
 
     # Read in the url paths and download the images one at a time.
-    dataprocessing.create_path(
-        os.path.join(images_path, "x")
-    )  # since I split the path in create_path I need a dummy file.
+    # since I split the path in create_path I need a dummy file.
+    dataprocessing.create_path(os.path.join(images_path, "x"))
     with open(url_path, "r") as f:
         for i, url in enumerate(f):
             urllib.request.urlretrieve(url, os.path.join(images_path, str(i) + ".png"))
