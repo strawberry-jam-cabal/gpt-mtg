@@ -2,12 +2,14 @@
 This script has a few functionaities:
 
 1. download-images:  This call will download all images necessary for training the gan
-2. download-cards: This call will download the json representation of all of the cards data and process it into a single
+2. process-card-text: This call will download the json representation of all of the cards data and process it into a single
     text file.
 """
 
 import os
 import sys
+import urllib.request
+
 import gpt_2_simple as gpt2
 
 from pymtg import dataprocessing
@@ -27,18 +29,42 @@ def main():
     pass
 
 
-@main.command("style-transfer")
-@click.argument("content-image-path")
-@click.argument("style-image-path")
-@click.option("--num-steps", default=300)
-def download_images():
-    pass
+@main.command("download-images")
+@click.option("--images-path", type=str, default="./data/images")
+def download_images(images_path: str):
+    """Downloads all of the images necessary for training an MTG GAN
+
+    Args:
+        images_path: The path to a directory which will hold all images
+
+    Returns:
+
+    """
+
+    # Scrape the image data and store the urls in a text file one line for each url
+    url_path = "./data/magic_urls.csv"
+    if not os.path.isfile(url_path):
+        dataprocessing.scrape_image_data(url_path)
+
+    # Read in the url paths and download the images one at a time.
+    dataprocessing.create_path(
+        os.path.join(images_path, "x")
+    )  # since I split the path in create_path I need a dummy file.
+    with open(url_path, "r") as f:
+        for i, url in enumerate(f):
+            urllib.request.urlretrieve(url, os.path.join(images_path, str(i) + ".png"))
 
 
 @main.command("process-card-text")
 @click.option("--input-file-path", type=str, default="./data/AllCards.json")
 @click.option("--output-file-path", type=str, default="./data/mtg_combined.txt")
 def process_card_text(input_file_path: str, output_file_path) -> None:
+    """Gets all necessary text data for MGT GPT2 and compiles it into one .txt file
+
+    Args:
+        input_file_path: The path to the MTG json file with all cards
+        output_file_path: The output path to where the compiled .txt file should be
+    """
 
     # Download all the cards if we don't have them
     dataprocessing.create_path(input_file_path)

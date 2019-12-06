@@ -132,7 +132,7 @@ def get_html(url: str, headers: Optional[Dict[str, str]] = None):
     return soup
 
 
-def scrape_image_data() -> None:
+def scrape_image_data(file_path: str) -> None:
     """Saves the urls of all images used for training mtg gans these can then be downloaded by running
     wget -i magic_urls.csv
     """
@@ -155,6 +155,4 @@ def scrape_image_data() -> None:
             except:
                 continue
 
-    pd.DataFrame(urls, columns=["url"]).to_csv(
-        "../data/magic_urls.csv", index=False, header=False
-    )
+    pd.DataFrame(urls, columns=["url"]).to_csv(file_path, index=False, header=False)
