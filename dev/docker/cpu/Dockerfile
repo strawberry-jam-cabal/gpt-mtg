@@ -4,7 +4,7 @@ FROM tensorflow/tensorflow:1.15.0-py3
 # sudo apt-get update && install protobuf-compiler git-core
 
 # Add the repos to the docker file and make it the working directory
-RUN pip3 install gpt-2-simple jupyter regex requests tqdm numpy toposort pandas click
+RUN pip3 install gpt-2-simple jupyter regex requests tqdm numpy toposort pandas click BeautifulSoup
 
 # Enter the Shell
 CMD /bin/bash
