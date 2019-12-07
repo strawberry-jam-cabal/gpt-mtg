@@ -104,7 +104,7 @@ def finetune(model_name: str, text_path: str, num_steps) -> None:
 @click.option("--length", type=int, default=1023)
 @click.option(
     "--temperature",
-    type=int,
+    type=float,
     default=0.7,
     help="lower more consistent, higher more fun",
 )
