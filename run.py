@@ -105,15 +105,17 @@ def finetune(model_name: str, text_path: str, num_steps) -> None:
 @click.option(
     "--temperature",
     type=float,
-    default=0.7,
+    default=1.0,
     help="lower more consistent, higher more fun",
 )
+@click.option("--destination-path", type=str, default=None)
 def generate_text(
     checkpoint_dir: str,
     n_samples: int,
     batch_size: int,
     length: int,
     temperature: float,
+    destination_path: str,
 ) -> None:
     sess = gpt2.start_tf_sess()
     gpt2.load_gpt2(sess, checkpoint_dir=checkpoint_dir)
@@ -124,6 +126,7 @@ def generate_text(
         batch_size=batch_size,
         length=length,
         temperature=temperature,
+        destination_path=destination_path,
     )
 
 
