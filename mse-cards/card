@@ -1,0 +1,541 @@
+mse version: 0.3.8
+game: magic
+stylesheet: m15
+set info:
+	symbol:
+styling:
+	magic-m15:
+		text box mana symbols: magic-mana-small.mse-symbol-font
+		overlay:
+	magic-m15-clear:
+		text box mana symbols: magic-mana-small.mse-symbol-font
+		overlay: 
+	magic-m15-extra-improved:
+		text box mana symbols: magic-mana-small.mse-symbol-font
+		pt box symbols: magic-pt-symbols-extra.mse-symbol-font
+		overlay: 
+	magic-m15-planeswalker:
+		text box mana symbols: magic-mana-small.mse-symbol-font
+		overlay: 
+	magic-m15-planeswalker-promo-black:
+		text box mana symbols: magic-mana-small.mse-symbol-font
+		overlay: 
+	magic-m15-promo-dka:
+		text box mana symbols: magic-mana-small.mse-symbol-font
+		overlay: 
+	magic-m15-token-clear:
+		text box mana symbols: magic-mana-small.mse-symbol-font
+		overlay: 
+	magic-new-planeswalker:
+		text box mana symbols: magic-mana-small.mse-symbol-font
+		overlay: 
+	magic-new-planeswalker-4abil:
+		text box mana symbols: magic-mana-small.mse-symbol-font
+		overlay: 
+	magic-new-planeswalker-clear:
+		text box mana symbols: magic-mana-small.mse-symbol-font
+		overlay: 
+	magic-new-planeswalker-promo-black:
+		text box mana symbols: magic-mana-small.mse-symbol-font
+		overlay: 
+card:
+	name: Ingenious Hunter
+	rarity: rare
+	casting cost: 4GG
+	super type: {^Gg}: @ Gets +&^/+&^ Until End Of Turn.
+	rule text:
+		
+	has styling: false
+	time created:2015-07-20 22:53:07
+	time modified:2015-07-20 22:53:08
+	extra data:
+	image:
+	card code text:
+	copyright:
+	image 2:
+	copyright 2:
+	notes:
+		raw:
+		{^GG}: @ gets +&^/+&^ until end of turn.|3{^^^^GGGG}|0A|1ingenious hunter|
+		
+		ingenious hunter {4}{G}{G}
+		{^GG}: @ gets +&^/+&^ until end of turn. (rare)
+card:
+	name: Urza'S Assassin
+	rarity: uncommon
+	casting cost: 2RR
+	super type: Creature
+	sub type: Ogre Warrior Shaman
+	power: 3
+	toughness: 2
+	rule text:
+		<sym-auto>T</sym-auto>: <atom-cardname><nospellcheck>Urza'S Assassin</nospellcheck></atom-cardname> deals 1 damage to target creature or player.
+	has styling: false
+	time created:2015-07-20 22:53:07
+	time modified:2015-07-20 22:53:08
+	extra data:
+	image:
+	card code text:
+	copyright:
+	image 2:
+	copyright 2:
+	notes:
+		raw:
+		|5creature|4|6ogre warrior shaman|7|8&^^^/&^^|9T: @ deals &^ damage to target creature or player.|3{^^RRRR}|0N|1urza's assassin|
+		
+		urza's assassin {2}{R}{R}
+		creature ~ ogre warrior shaman (uncommon)
+		{T}: @ deals 1 damage to target creature or player.
+		(3/2)
+card:
+	name: Rockslide Elemental
+	rarity: uncommon
+	casting cost: 2RR
+	super type: Instant
+	rule text:
+		<atom-cardname><nospellcheck>Rockslide Elemental</nospellcheck></atom-cardname> deals damage to target creature equal to the number of artifacts you control.
+	has styling: false
+	time created:2015-07-20 22:53:07
+	time modified:2015-07-20 22:53:08
+	extra data:
+	image:
+	card code text:
+	copyright:
+	image 2:
+	copyright 2:
+	notes:
+		raw:
+		|5instant|4|6|7|8|9@ deals damage to target creature equal to the number of artifacts you control.|3{^^RRRR}|0N|1rockslide elemental|
+		
+		rockslide elemental {2}{R}{R}
+		instant (uncommon)
+		@ deals damage to target creature equal to the number of artifacts you control.
+card:
+	name: Bold Defense
+	rarity: common
+	casting cost: 1W
+	super type: Instant
+	rule text:
+		Target creature gets +1/+0 and gains first strike until end of turn.
+		Draw a card.
+	has styling: false
+	time created:2015-07-20 22:53:07
+	time modified:2015-07-20 22:53:08
+	extra data:
+	image:
+	card code text:
+	copyright:
+	image 2:
+	copyright 2:
+	notes:
+		raw:
+		|5instant|4|6|7|8|9target creature gets +&^/+& and gains first strike until end of turn.\draw a card.|3{^WW}|0O|1bold defense|
+		
+		bold defense {1}{W}
+		instant (common)
+		target creature gets +1/+0 and gains first strike until end of turn.
+		draw a card.
+card:
+	name: Noose Of The Woods
+	rarity: uncommon
+	casting cost: 2G
+	super type: Enchantment
+	rule text:
+		Whenever a creature becomes blocked by a creature with power 3 or greater, you may have that creature block <atom-cardname><nospellcheck>Noose Of The Woods</nospellcheck></atom-cardname>.
+	has styling: false
+	time created:2015-07-20 22:53:07
+	time modified:2015-07-20 22:53:08
+	extra data:
+	image:
+	card code text:
+	copyright:
+	image 2:
+	copyright 2:
+	notes:
+		raw:
+		|5enchantment|4|6|7|8|9whenever a creature becomes blocked by a creature with power &^^^ or greater, you may have that creature block @.|3{^^GG}|0N|1noose of the woods|
+		
+		noose of the woods {2}{G}
+		enchantment (uncommon)
+		whenever a creature becomes blocked by a creature with power 3 or greater, you may have that creature block @.
+card:
+	name: Tide Of War
+	rarity: common
+	casting cost: R
+	super type: Instant
+	rule text:
+		Target creature gets +3/+3 until end of turn. That creature gets -4/-0 until end of turn.
+	has styling: false
+	time created:2015-07-20 22:53:07
+	time modified:2015-07-20 22:53:08
+	extra data:
+	image:
+	card code text:
+	copyright:
+	image 2:
+	copyright 2:
+	notes:
+		raw:
+		|5instant|4|6|7|8|9target creature gets +&^^^/+&^^^ until end of turn. that creature gets -&^^^^/-& until end of turn.|3{RR}|0O|1tide of war|
+		
+		tide of war {R}
+		instant (common)
+		target creature gets +3/+3 until end of turn. that creature gets -4/-0 until end of turn.
+card:
+	name: Drowner Initiate
+	rarity: common
+	casting cost: U
+	super type: Creature
+	sub type: Merfolk Wizard
+	power: 1
+	toughness: 1
+	rule text:
+		Whenever a player casts a blue spell, you may pay <sym-auto>1</sym-auto>. If you do, target player puts the top two cards of his or her library into his or her graveyard.
+	has styling: false
+	time created:2015-07-20 22:53:07
+	time modified:2015-07-20 22:53:08
+	extra data:
+	image:
+	card code text:
+	copyright:
+	image 2:
+	copyright 2:
+	notes:
+		raw:
+		|5creature|4|6merfolk wizard|7|8&^/&^|9whenever a player casts a blue spell, you may pay {^}. if you do, target player puts the top two cards of his or her library into his or her graveyard.|3{UU}|0O|1drowner initiate|
+		
+		drowner initiate {U}
+		creature ~ merfolk wizard (common)
+		whenever a player casts a blue spell, you may pay {1}. if you do, target player puts the top two cards of his or her library into his or her graveyard.
+		(1/1)
+card:
+	name: Vex
+	rarity: common
+	casting cost: 2U
+	super type: Instant
+	rule text:
+		Counter target spell. That spell's controller may draw a card.
+	has styling: false
+	time created:2015-07-20 22:53:07
+	time modified:2015-07-20 22:53:08
+	extra data:
+	image:
+	card code text:
+	copyright:
+	image 2:
+	copyright 2:
+	notes:
+		raw:
+		|5instant|4|6|7|8|9uncast target spell. that spell's controller may draw a card.|3{^^UU}|0O|1vex|
+		
+		vex {2}{U}
+		instant (common)
+		uncast target spell. that spell's controller may draw a card.
+card:
+	name: Serra'S Blessing
+	rarity: uncommon
+	casting cost: 1W
+	super type: Enchantment
+	rule text:
+		Creatures you control have vigilance.
+	has styling: false
+	time created:2015-07-20 22:53:07
+	time modified:2015-07-20 22:53:08
+	extra data:
+	image:
+	card code text:
+	copyright:
+	image 2:
+	copyright 2:
+	notes:
+		raw:
+		|5enchantment|4|6|7|8|9creatures you control have vigilance.|3{^WW}|0N|1serra's blessing|
+		
+		serra's blessing {1}{W}
+		enchantment (uncommon)
+		creatures you control have vigilance.
+card:
+	name: Wall Of Swords
+	rarity: uncommon
+	casting cost: 3W
+	super type: Creature
+	sub type: Wall
+	power: 3
+	toughness: 5
+	rule text:
+		Defender
+		Flying
+	has styling: false
+	time created:2015-07-20 22:53:07
+	time modified:2015-07-20 22:53:08
+	extra data:
+	image:
+	card code text:
+	copyright:
+	image 2:
+	copyright 2:
+	notes:
+		raw:
+		|5creature|4|6wall|7|8&^^^/&^^^^^|9defender\flying|3{^^^WW}|0N|1wall of swords|
+		
+		wall of swords {3}{W}
+		creature ~ wall (uncommon)
+		defender
+		flying
+		(3/5)
+card:
+	name: Screeching Harpy
+	rarity: uncommon
+	casting cost: 2BB
+	super type: Creature
+	sub type: Harpy Beast
+	power: 2
+	toughness: 2
+	rule text:
+		Flying
+		<sym-auto>1</sym-auto><sym-auto>B</sym-auto>: regenerate <atom-cardname><nospellcheck>Screeching Harpy</nospellcheck></atom-cardname>.
+	has styling: false
+	time created:2015-07-20 22:53:07
+	time modified:2015-07-20 22:53:08
+	extra data:
+	image:
+	card code text:
+	copyright:
+	image 2:
+	copyright 2:
+	notes:
+		raw:
+		|5creature|4|6harpy beast|7|8&^^/&^^|9flying\{^BB}: regenerate @.|3{^^BBBB}|0N|1screeching harpy|
+		
+		screeching harpy {2}{B}{B}
+		creature ~ harpy beast (uncommon)
+		flying
+		{1}{B}: regenerate @.
+		(2/2)
+card:
+	name: Lumbering Falls
+	rarity: rare
+	super type: Land
+	rule text:
+		<atom-cardname><nospellcheck>Lumbering Falls</nospellcheck></atom-cardname> enters the battlefield tapped.
+		<sym-auto>T</sym-auto>: add <sym-auto>G</sym-auto> or <sym-auto>U</sym-auto> to your mana pool.
+		<sym-auto>2</sym-auto><sym-auto>G</sym-auto><sym-auto>U</sym-auto>: <atom-cardname><nospellcheck>Lumbering Falls</nospellcheck></atom-cardname> becomes a 3/3 green and blue elemental creature with hexproof until end of turn. It's still a land.
+	has styling: false
+	time created:2015-07-20 22:53:07
+	time modified:2015-07-20 22:53:08
+	extra data:
+	image:
+	card code text:
+	copyright:
+	image 2:
+	copyright 2:
+	notes:
+		raw:
+		|5land|4|6|7|8|9@ enters the battlefield tapped.\T: add {GG} or {UU} to your mana pool.\{^^GGUU}: @ becomes a &^^^/&^^^ green and blue elemental creature with hexproof until end of turn. it's still a land.|3|0A|1lumbering falls|
+		
+		lumbering falls
+		land (rare)
+		@ enters the battlefield tapped.
+		{T}: add {G} or {U} to your mana pool.
+		{2}{G}{U}: @ becomes a 3/3 green and blue elemental creature with hexproof until end of turn. it's still a land.
+card:
+	name: Exotic Curse
+	rarity: common
+	casting cost: 2B
+	super type: Enchantment
+	sub type: Aura
+	rule text:
+		Enchant creature
+		Domain — enchanted creature gets -1/-1 for each basic land type among lands you control.
+	has styling: false
+	time created:2015-07-20 22:53:07
+	time modified:2015-07-20 22:53:08
+	extra data:
+	image:
+	card code text:
+	copyright:
+	image 2:
+	copyright 2:
+	notes:
+		raw:
+		|5enchantment|4|6aura|7|8|9enchant creature\domain ~ enchanted creature gets -&^/-&^ for each basic land type among lands you control.|3{^^BB}|0O|1exotic curse|
+		
+		exotic curse {2}{B}
+		enchantment ~ aura (common)
+		enchant creature
+		domain ~ enchanted creature gets -1/-1 for each basic land type among lands you control.
+card:
+	name: Aven Envoy
+	rarity: common
+	casting cost: U
+	super type: Creature
+	sub type: Bird Soldier
+	power: 0
+	toughness: 2
+	rule text:
+		Flying
+	has styling: false
+	time created:2015-07-20 22:53:07
+	time modified:2015-07-20 22:53:08
+	extra data:
+	image:
+	card code text:
+	copyright:
+	image 2:
+	copyright 2:
+	notes:
+		raw:
+		|5creature|4|6bird soldier|7|8&/&^^|9flying|3{UU}|0O|1aven envoy|
+		
+		aven envoy {U}
+		creature ~ bird soldier (common)
+		flying
+		(0/2)
+card:
+	name: Powerstone Minefield
+	rarity: rare
+	casting cost: 2RW
+	super type: Enchantment
+	rule text:
+		Whenever a creature attacks or blocks, <atom-cardname><nospellcheck>Powerstone Minefield</nospellcheck></atom-cardname> deals 2 damage to it.
+	has styling: false
+	time created:2015-07-20 22:53:07
+	time modified:2015-07-20 22:53:08
+	extra data:
+	image:
+	card code text:
+	copyright:
+	image 2:
+	copyright 2:
+	notes:
+		raw:
+		|5enchantment|4|6|7|8|9whenever a creature attacks or blocks, @ deals &^^ damage to it.|3{^^RRWW}|0A|1powerstone minefield|
+		
+		powerstone minefield {2}{R}{W}
+		enchantment (rare)
+		whenever a creature attacks or blocks, @ deals 2 damage to it.
+card:
+	name: Street Spasm
+	rarity: uncommon
+	casting cost: XR
+	super type: Instant
+	rule text:
+		Overload <sym-auto>X</sym-auto><sym-auto>X</sym-auto><sym-auto>R</sym-auto><sym-auto>R</sym-auto>
+		<atom-cardname><nospellcheck>Street Spasm</nospellcheck></atom-cardname> deals X damage to target creature without flying you don't control.
+	has styling: false
+	time created:2015-07-20 22:53:07
+	time modified:2015-07-20 22:53:08
+	extra data:
+	image:
+	card code text:
+	copyright:
+	image 2:
+	copyright 2:
+	notes:
+		raw:
+		|5instant|4|6|7|8|9overload {XXXXRRRR}\@ deals X damage to target creature without flying you don't control.|3{XXRR}|0N|1street spasm|
+		
+		street spasm {X}{R}
+		instant (uncommon)
+		overload {X}{X}{R}{R}
+		@ deals X damage to target creature without flying you don't control.
+card:
+	name: Phyrexian Tyranny
+	rarity: rare
+	casting cost: UBR
+	super type: Enchantment
+	rule text:
+		Whenever a player draws a card, that player loses 2 life unless he or she pays <sym-auto>2</sym-auto>.
+	has styling: false
+	time created:2015-07-20 22:53:07
+	time modified:2015-07-20 22:53:08
+	extra data:
+	image:
+	card code text:
+	copyright:
+	image 2:
+	copyright 2:
+	notes:
+		raw:
+		|5enchantment|4|6|7|8|9whenever a player draws a card, that player loses &^^ life unless he or she pays {^^}.|3{UUBBRR}|0A|1phyrexian tyranny|
+		
+		phyrexian tyranny {U}{B}{R}
+		enchantment (rare)
+		whenever a player draws a card, that player loses 2 life unless he or she pays {2}.
+card:
+	name: Mortal Combat
+	rarity: rare
+	casting cost: 2BB
+	super type: Enchantment
+	rule text:
+		At the beginning of your upkeep, if twenty or more creature cards are in your graveyard, you win the game.
+	has styling: false
+	time created:2015-07-20 22:53:07
+	time modified:2015-07-20 22:53:08
+	extra data:
+	image:
+	card code text:
+	copyright:
+	image 2:
+	copyright 2:
+	notes:
+		raw:
+		|5enchantment|4|6|7|8|9at the beginning of your upkeep, if twenty or more creature cards are in your graveyard, you win the game.|3{^^BBBB}|0A|1mortal combat|
+		
+		mortal combat {2}{B}{B}
+		enchantment (rare)
+		at the beginning of your upkeep, if twenty or more creature cards are in your graveyard, you win the game.
+card:
+	name: Second Guess
+	rarity: uncommon
+	casting cost: 1U
+	super type: Instant
+	rule text:
+		Counter target spell that's the second spell cast this turn.
+	has styling: false
+	time created:2015-07-20 22:53:07
+	time modified:2015-07-20 22:53:08
+	extra data:
+	image:
+	card code text:
+	copyright:
+	image 2:
+	copyright 2:
+	notes:
+		raw:
+		|5instant|4|6|7|8|9uncast target spell that's the second spell cast this turn.|3{^UU}|0N|1second guess|
+		
+		second guess {1}{U}
+		instant (uncommon)
+		uncast target spell that's the second spell cast this turn.
+card:
+	name: 
+	super type: Enchantment
+	rule text:
+		All lands have indestruct
+	stylesheet: new-split
+	name 2: 
+	super type 2: 
+	has styling: false
+	time created:2015-07-20 22:53:07
+	time modified:2015-07-20 22:53:08
+	extra data:
+	image:
+	card code text:
+	copyright:
+	image 2:
+	copyright 2:
+	notes:
+		raw:
+		|5enchantment|4|6|7|8|9all lands have indestruct
+		
+		
+		
+		enchantment
+		all lands have indestruct
+		~~~~~~~~
+		
+		
+version control:
+	type: none
+apprentice code: 
