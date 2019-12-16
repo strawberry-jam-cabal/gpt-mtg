@@ -1,4 +1,5 @@
-*~
+.idea
+.DS_Store
 *.pyc
 AllSets.json
 AllSets-x.json
