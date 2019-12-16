@@ -9,7 +9,7 @@ To build containers capable of running the code on either the cpu or gpu use the
 
 ## Finetuning Model
 To finetune a model on your dataset:
-1. Create a dataset where the start of each text section begins with  `<|startoftext|>` and the end of the section ends with `<|endoftext|>`
+1. Create a dataset like output.txt in the wonderful <a href="https://github.com/billzorn/mtgencode">mtgencode<a> repository.  If you want to build your own dataset follow the instructions in the mtgencode repostiory.  For this project I just used output.txt
 2. Create the appropriate docker container by running either `make build-cpu` or `make build-gpu`
 3. Run `python3 run.py finetune` with the appropriate flags, with no adjustments this will run on the magic data in the data folder.
 
@@ -22,8 +22,20 @@ To predict text:
 
 ## Creating Cards
 Follow the instructions in <a href="https://github.com/minimaxir/mtg-card-creator-api">this</a> repository to get setup.
-Once you have all of the necessary tools to generate magic cards then...
+Once you have all of the necessary tools to generate magic cards then:
+1. Run the model to generate an encoding which should be parsable by mtgencode
+2. Use mtgencode to create a human readible version of the card `./decode.py -v ~/mtg-rnn/cards.txt cards.pretty.txt -d`
+3. Use mtgencode to create a magic set editor set file`decode.py -e rfields -mse encoded.txt MSE/card`
 
 # Contributing
 To contribute to this repository please:
 1. `cp dev/hooks/pre-commit .git/hooks` and `chmod +x .git/hooks/pre-commit`
+
+
+
+## TODO:
+- Update the readme to reflect the decision to use mtgencode instead of my home built solution
+- figure out how to get allsets.json and parse it using mtgencode
+- figure out how to use decode to mse to get mse parseable cards
+- Figure out how to use mse to generate new cards.
+

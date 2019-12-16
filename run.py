@@ -4,6 +4,7 @@ This script has a few functionaities:
 1. download-images:  This call will download all images necessary for training the gan
 2. process-card-text: This call will download the json representation of all of the cards data and process it into a single
     text file.
+
 """
 
 import os

@@ -3,6 +3,7 @@ import os
 import requests
 from typing import Dict, List, Optional
 import urllib
+import subprocess
 
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -156,3 +157,33 @@ def scrape_image_data(file_path: str) -> None:
                 continue
 
     pd.DataFrame(urls, columns=["url"]).to_csv(file_path, index=False, header=False)
+
+
+def create_cards(file_path: str) -> None:
+    """Takes converts the model output into human readible text and a mse card set
+
+    Args:
+        file_path: A path to a text file containing the output from the gpt2model
+    """
+    subprocess.call(
+        [
+            "python2.7",
+            "mtgencode/decode.py",
+            "-e",
+            "rfields",
+            "-g",
+            "encoded.txt",
+            "card.txt",
+        ]
+    )
+    subprocess.call(
+        [
+            "python2.7",
+            "mtgencode/decode.py",
+            "-e",
+            "rfields",
+            "-mse",
+            "encoded.txt",
+            "MSE/card",
+        ]
+    )
