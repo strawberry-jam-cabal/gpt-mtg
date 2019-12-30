@@ -9,6 +9,7 @@ This script has a few functionaities:
 
 import os
 import sys
+import json
 import urllib.request
 
 import gpt_2_simple as gpt2
@@ -28,6 +29,26 @@ import click
 @click.group()
 def main():
     pass
+
+
+@main.command("compile-sets-to-json")
+@click.argument("path")
+@click.argument("output-path")
+def compile_sets_to_json(path: str, output_path: str):
+    """Compiles all of the set json to a single json file with a list as the top level.
+
+    Args:
+        path: to the folder containing all json set files.
+
+    Returns:
+    """
+    sets = []
+    for file in os.listdir(path):
+        with open(os.path.join(path, file), "r") as f:
+            sets.append(json.load(f))
+
+    with open(output_path, "w") as outfile:
+        json.dump(sets, outfile)
 
 
 @main.command("download-images")
