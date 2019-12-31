@@ -13,6 +13,9 @@ import json
 import urllib.request
 
 import gpt_2_simple as gpt2
+from keras.models import load_model
+import matplotlib.pyplot as plt
+import numpy as np
 
 from pymtg import dataprocessing
 
@@ -103,7 +106,8 @@ def process_card_text(input_file_path: str, output_file_path) -> None:
     "--model-name", type=str, default="124M", help="Can be 117M, 124M, or 355M"
 )
 @click.option("--text-path", type=str, default="./data/mtg_combined.txt")
-@click.option("--num-steps", type=int, default=10000)
+@click.option("--num-steps", type=int, default=3000)
+# TODO:: aDD TEXT SIZE
 def finetune(model_name: str, text_path: str, num_steps) -> None:
 
     # Download the model if it is not present
@@ -150,6 +154,29 @@ def generate_text(
         temperature=temperature,
         destination_path=destination_path,
     )
+
+
+@main.command("generate-images")
+@click.argument("model-path")
+@click.argument("output-dir")
+@click.option("--num-images", type=int, default=50)
+def generate_images(model_path: str, output_dir: str, num_images: int):
+    plt.ioff()
+    model = load_model(model_path)
+    noise = np.random.normal(0, 1, (num_images, 100))
+    imgs = model.predict(noise)
+    for i in range(0, 50):
+        fig, ax = plt.subplots(1, 1)
+        ax.imshow(imgs[i])
+        ax.axis("off")
+        fig.savefig(os.path.join(output_dir, "mtg_{}.png".format(str(i))))
+        plt.close(fig)
+
+        fig, ax = plt.subplots(1, 1)
+        ax.imshow(0.5 * imgs[i] + 0.5)  # Need to normalize images to proper range.
+        ax.axis("off")
+        fig.savefig(os.path.join(output_dir, "mtg_{}_n.png".format(str(i))))
+        plt.close(fig)
 
 
 if __name__ == "__main__":

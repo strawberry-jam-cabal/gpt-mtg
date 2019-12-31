@@ -1,5 +1,12 @@
 """
 This code was modified from the great work of Erik Linder-Noren.
+Specifically Added:
+- Model saving and loading to retrain existing models and generate new images
+- Model auto sizing based on inputs
+- Configurable model parameters
+- dropout parameters for experimentation
+- Data Generators for loading data from directories
+- label smoothing
 
 MIT License
 
@@ -29,23 +36,19 @@ Some personal paths
 ["/Users/tetracycline/repos/datascience/usda_water_colors"],
 ["/tmp/tetracycline/data/images/usda_water_colors", "/tmp/tetracycline/data/images/hunt_plants_watercolor"],
 ["/tmp/tetracycline/data/images/mtg/magic_cards"],
-
-Dropout does not seem all that helpful...\
 """
 
-# TODO:: load_all_data is confusing and is used for the watercolors
+# TODO:: load_all_data is confusing and is used for the watercolors because of preprocessing shenanigans
 # I think this needs to be turned off for basically everything else.
 # This is confusing and should be cleaned
 
-# TODO:: HANDLE BASE_FILTER SIZING, THIS SHOULD DYNAMICALLY SCALE TO THE SIZE OF THE IMAGE.
+# TODO
 # The generator has good results when 32 is the number of final filters and 512 is the number of input filters
 # Can we get good performance with fewer final layer filters i.e. 16.  If we can we can reduce the model size substantially
 # This would allow bigger images.  If not we might be limited by the filter size.
 
-# TODO:: ADD conv2d transpose instead of upsampling
-
-# Add decaying noise to discriminator input
-
+# TODO:: ADD conv2d transpose instead of upsampling, this has been shown to have better performance
+# TODO:: Add decaying noise to discriminator input
 # TODO:: ADD DROPOUT WHICH RUNS DURING TRAINING AS WELL AT 50% to more layers
 from functools import partial
 import math
@@ -86,9 +89,7 @@ import click
 
 
 def PermaDropout(rate):
-    return Lambda(
-        lambda x: K.dropout(x, level=rate)
-    )
+    return Lambda(lambda x: K.dropout(x, level=rate))
 
 
 @click.group()
@@ -620,7 +621,7 @@ def train(
         model_save_dir=model_save_dir,
         dropout_rate=dropout_rate,
         dropout_at_test=dropout_at_test,
-        num_base_filters=num_base_filters
+        num_base_filters=num_base_filters,
     )
     dcgan.train(
         gen,

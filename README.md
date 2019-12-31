@@ -23,9 +23,11 @@ To predict text:
 ## Creating Cards
 Follow the instructions in <a href="https://github.com/minimaxir/mtg-card-creator-api">this</a> repository to get setup.
 Once you have all of the necessary tools to generate magic cards then:
-1. Run the model to generate an encoding which should be parsable by mtgencode
-2. Use mtgencode to create a human readible version of the card `./decode.py -v ~/mtg-rnn/cards.txt cards.pretty.txt -d`
-3. Use mtgencode to create a magic set editor set file`decode.py -e rfields -mse encoded.txt MSE/card`
+1. Start docker with `make run-cpu`
+2. Run the model to generate an encoding which should be parsable by mtgencode by running `python3 run.py generate-text --destination-path <filepath.txt>`
+3. Use mtgencode to create a human readible version of the card `./decode.py -v <cardfile.txt> cards.pretty.txt -d`
+4. Use mtgencode to create a magic set zeditor set file`decode.py -e rfields -mse encoded.txt MSE/card`
+5. Use magic set editor to create sets from the cards
 
 # Contributing
 To contribute to this repository please:
@@ -34,7 +36,6 @@ To contribute to this repository please:
 
 
 ## TODO:
-- Update the readme to reflect the decision to use mtgencode instead of my home built solution
 - figure out how to get allsets.json and parse it using mtgencode
 - figure out how to use decode to mse to get mse parseable cards
 - Figure out how to use mse to generate new cards.
