@@ -6,6 +6,7 @@ This script has a few functionaities:
     text file.
 
 """
+from typing import Optional
 
 import os
 import sys
@@ -107,8 +108,16 @@ def process_card_text(input_file_path: str, output_file_path) -> None:
 )
 @click.option("--text-path", type=str, default="./data/mtg_combined.txt")
 @click.option("--num-steps", type=int, default=3000)
+@click.option("--sample-length", type=int, default=1023)
+@click.option("--save-every", type=int, default=None)
 # TODO:: aDD TEXT SIZE
-def finetune(model_name: str, text_path: str, num_steps) -> None:
+def finetune(
+    model_name: str,
+    text_path: str,
+    num_steps: int,
+    sample_length: int,
+    save_every: Optional[int],
+) -> None:
 
     # Download the model if it is not present
     if not os.path.isdir(os.path.join("models", model_name)):
@@ -116,8 +125,17 @@ def finetune(model_name: str, text_path: str, num_steps) -> None:
         gpt2.download_gpt2(model_name=model_name)
 
     sess = gpt2.start_tf_sess()
+
+    if save_every is None:
+        save_every = int(num_steps / 4)
+
     gpt2.finetune(
-        sess, text_path, model_name=model_name, steps=num_steps
+        sess,
+        text_path,
+        model_name=model_name,
+        steps=num_steps,
+        sample_length=sample_length,
+        save_every=save_every,
     )  # steps is max number of training steps
 
     gpt2.generate(sess)
