@@ -153,6 +153,7 @@ def finetune(
     help="lower more consistent, higher more fun",
 )
 @click.option("--destination-path", type=str, default=None)
+@click.option("--prefix", type=str, default=None)
 def generate_text(
     checkpoint_dir: str,
     n_samples: int,
@@ -160,6 +161,7 @@ def generate_text(
     length: int,
     temperature: float,
     destination_path: str,
+    prefix: Optional[str],
 ) -> None:
     sess = gpt2.start_tf_sess()
     gpt2.load_gpt2(sess, checkpoint_dir=checkpoint_dir)
@@ -171,6 +173,7 @@ def generate_text(
         length=length,
         temperature=temperature,
         destination_path=destination_path,
+        prefix=prefix,
     )
 
 
