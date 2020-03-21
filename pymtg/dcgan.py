@@ -168,6 +168,9 @@ def image_random_data_generator(
 
             resized_img = np.array(Image.fromarray(img).resize(image_size))
 
+            if len(resized_img.shape) < 3:
+                resized_img = np.dstack((img, img, img))
+
             imgs.append(resized_img)
 
         # yield the result
