@@ -166,10 +166,9 @@ def image_random_data_generator(
             if img.dtype == "float32" or img.dtype == "float64":
                 img = (img * 255).astype(np.uint8)
 
-            resized_img = np.array(Image.fromarray(img).resize(image_size))
-
-            if len(resized_img.shape) < 3:
-                resized_img = np.dstack((img, img, img))
+            resized_img = np.array(
+                Image.fromarray(img).resize(image_size).convert("RGB")
+            )
 
             imgs.append(resized_img)
 
