@@ -148,7 +148,7 @@ def image_random_data_generator(
         ones:
     """
     file_names = os.listdir(data_path)
-    file_names = [file_name for file_name in file_names if file_name != ".DS_Store"]
+    file_names = [file_name for file_name in file_names if ".DS_Store" not in file_name]
     y_train = np.ones([batch_size, 1])
     while True:
         # Randomly Sample batch_size worth of images
@@ -156,24 +156,22 @@ def image_random_data_generator(
 
         sampled_files = [file_names[i] for i in sample_idxs]
 
-        # Load in the images
-        imgs = [
-            mpimg.imread(os.path.join(data_path, file_name))
-            for file_name in sampled_files
-        ]
+        imgs = []
+        for file_name in sampled_files:
+            img = mpimg.imread(os.path.join(data_path, file_name))
 
-        if image_crop is not None:
-            imgs = [
-                image[image_crop:-image_crop, image_crop:-image_crop] for image in imgs
-            ]
+            if image_crop is not None:
+                img = img[image_crop:-image_crop, image_crop:-image_crop]
 
-        # Resize the images
-        resized_images = [
-            np.array(Image.fromarray(image).resize(image_size)) for image in imgs
-        ]
+            if img.dtype == "float32" or img.dtype == "float64":
+                img = (img * 255).astype(np.uint8)
+
+            resized_img = np.array(Image.fromarray(img).resize(image_size))
+
+            imgs.append(resized_img)
 
         # yield the result
-        yield np.array(resized_images), y_train
+        yield np.array(imgs), y_train
 
 
 def process_one_image(
