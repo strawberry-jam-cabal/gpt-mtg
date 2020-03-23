@@ -627,7 +627,7 @@ def train(
         dropout_at_test=dropout_at_test,
         num_base_filters=num_base_filters,
         load_generator_from=load_generator_from,
-        load_discriminator_from=load_discriminator_From,
+        load_discriminator_from=load_discriminator_from,
     )
     dcgan.train(
         gen,
