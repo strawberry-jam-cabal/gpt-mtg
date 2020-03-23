@@ -562,6 +562,8 @@ def is_power_of_two(num: int) -> bool:
 @click.argument("images-path")
 @click.argument("model-name")
 @click.option("--model-save-dir", type=str, default=".")
+@click.option("--load-generator-from", type=str, default=None)
+@click.option("--load-discriminator-from", type=str, default=None)
 @click.option("--length", type=int, default=128)
 @click.option("--num-base-filters", type=int, default=None)
 @click.option("--batch-size", type=int, default=128)
@@ -574,6 +576,8 @@ def train(
     images_path: str,
     model_name: str,
     model_save_dir: str,
+    load_generator_from: Optional[str],
+    load_discriminator_From: Optional[str],
     length: int,
     num_base_filters: int,
     batch_size: int,
@@ -622,6 +626,8 @@ def train(
         dropout_rate=dropout_rate,
         dropout_at_test=dropout_at_test,
         num_base_filters=num_base_filters,
+        load_generator_from=load_generator_from,
+        load_discriminator_from=load_discriminator_From,
     )
     dcgan.train(
         gen,
