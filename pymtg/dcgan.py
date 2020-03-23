@@ -577,7 +577,7 @@ def train(
     model_name: str,
     model_save_dir: str,
     load_generator_from: Optional[str],
-    load_discriminator_From: Optional[str],
+    load_discriminator_from: Optional[str],
     length: int,
     num_base_filters: int,
     batch_size: int,
