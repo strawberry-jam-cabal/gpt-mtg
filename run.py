@@ -107,6 +107,7 @@ def process_card_text(input_file_path: str, output_file_path) -> None:
     "--model-name", type=str, default="124M", help="Can be 117M, 124M, or 355M"
 )
 @click.option("--text-path", type=str, default="./data/mtg_combined.txt")
+@click.option("--checkpoint-dir", type=str, default="checkpoint")
 @click.option("--num-steps", type=int, default=3000)
 @click.option("--sample-length", type=int, default=1023)
 @click.option("--save-every", type=int, default=None)
@@ -114,6 +115,7 @@ def process_card_text(input_file_path: str, output_file_path) -> None:
 def finetune(
     model_name: str,
     text_path: str,
+    checkpoint_dir: str,
     num_steps: int,
     sample_length: int,
     save_every: Optional[int],
@@ -133,6 +135,7 @@ def finetune(
         sess,
         text_path,
         model_name=model_name,
+        checkpoint_dir=checkpoint_dir,
         steps=num_steps,
         sample_length=sample_length,
         save_every=save_every,
